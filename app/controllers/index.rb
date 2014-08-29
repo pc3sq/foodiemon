@@ -10,5 +10,3 @@ end
 post '/login' do
   "Hello World"
 end
-
-
