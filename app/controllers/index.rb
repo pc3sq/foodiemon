@@ -19,7 +19,3 @@ post '/login' do
     redirect to '/login'
   end
 end
-
-get '/foody/:id' do
-  "Hello World"
-end
