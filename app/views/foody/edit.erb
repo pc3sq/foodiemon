@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>FOODIE-MON MASTER</h1>
+
+  <p>Add validations; Add emails and such</p>
+
+  <form action="/foodies" method="post">
+    <input name="_method" value="put" type="hidden"/>
+    <input type="text" value="<%= session[:foody][:name] %>" name="foody[name]">
+    <br>
+    <br>
+    <input placeholder="Enter new password" type="password"  name="foody[password]">
+    <br>
+    <br>
+    <input type="submit" value="Sign Up">
+  </form>
+</div>
