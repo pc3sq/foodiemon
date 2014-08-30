@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>WELCOME <%= @foody.name %>!</h1>
+  <p>Choose what you want to do</p>
+  <p>View your Galleries</p>
+  <% @foody.galleries.each do |gallery| %>
+  <%= "<a href='/gallery/#{gallery.id}'>#{gallery.name}</a><br>" %>
+  <% end %>
+</div>
