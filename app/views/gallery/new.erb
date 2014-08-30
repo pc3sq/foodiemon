@@ -1,0 +1,20 @@
+<div class="container">
+
+  <h1>Hi <%= session[:foody][:name] %>! </h1>
+  <h3>Create A Gallery</h1>
+
+  <form action="/galleries" method="post">
+    <p>Gallery Name</p>
+    <input type="text" placeholder="Ex. Sushi" name="gallery[name]">
+    <br>
+    <br>
+    <p>Add a picture name & URL to get start.</p>
+    <span>Pic Name:  </span><input type="text" placeholder="Ex. Shiraj's Tuna" name="picture[name]">
+    <br>
+    <br>
+    <span>Pic URL:  </span><input type="url" placeholder="Ex. http://www.foodie-mon.com/foodie-mon.jpg" name="picture[url]">
+    <br>
+    <br>
+    <input type="submit" value="Create This Gallery">
+  </form>
+</div>
