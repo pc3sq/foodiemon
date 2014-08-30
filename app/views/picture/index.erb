@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>WELCOME FOODIE-MON MASTER</h1>
+  <p>Here are your pics!</p>
+  <% @pics.each do |pic|  %>
+  <p> <a href="<%= pic.url%>"><%= pic.name%></a> </p>
+  <% end %>
+</div>
