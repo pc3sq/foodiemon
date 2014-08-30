@@ -1,5 +1,4 @@
 get '/foody/new' do
-
   erb :"/foody/signup"
 end
 
@@ -11,7 +10,8 @@ post '/foodies' do
 end
 
 get '/foody/:id' do
-  "Hello World"
+  @foody = Foody.find(session[:foody][:id])
+  erb :'foody/home'
 end
 
 put '/foody/:id' do

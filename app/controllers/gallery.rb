@@ -9,14 +9,17 @@ get '/galleries' do
   erb :"/gallery/index"
 end
 
+
 # Route for getting form to create a new gallery ==WORKING==
 get '/gallery/new' do
   if session[:foody][:id]
     erb :"/gallery/new"
   else
+
     redirect to ("/gallery/error")
   end
 end
+
 
 # Route to create a gallery ==WORKING==
 post '/galleries' do
@@ -29,59 +32,62 @@ post '/galleries' do
 		redirect to ("/gallery/#{foody.galleries.find(gallery.id)}")
 	else
 
-		redirect to ("/gallery/error")
+		redirect to ("/gallery/errors/error")
 	end
 end
 
-# Route showing a specific gallery
+
+# Route showing a specific gallery ==WORKING==
 get '/gallery/:id' do
 	if session[:foody][:id] && Gallery.find(params[:id]).foody.id == session[:foody][:id]
-
 		@gallery = Gallery.find(params[:id])
+		@pictures = @gallery.pictures
 		erb :"gallery/show"
 	else
-		redirect to ("/gallery/error_not_your_gallery")
+		redirect to ("/gallery/errors/error_not_your_gallery")
 	end
 end
 
-#error messages
-get '/gallery/error' do
-  erb :"/gallery/error"
+
+# Route grabbing form to update a gallery. ==WORKING==
+get '/gallery/:id/edit' do
+  if session[:foody][:id] && Gallery.find(params[:id]).foody.id == session[:foody][:id]
+		@gallery = Gallery.find(params[:id])
+    	
+    	erb :"/gallery/edit"
+  else
+  	
+    redirect "/gallery/errors/error_not_your_gallery"
+  end
 end
 
-get "/gallery/error_not_your_gallery" do
-	erb :"/gallery/error_not_your_gallery"
+
+# Route updating a gallery. ==WORKING==
+put "/gallery/:id" do
+	@gallery = Gallery.find(params[:id])
+	@gallery.update(params[:gallery])
+
+	redirect "/gallery/#{@gallery.id}"
+end
+
+# Route deleting gallery. ==WORKING==
+delete "/gallery/:id" do
+	if session[:foody][:id] && Gallery.find(params[:id]).foody.id == session[:foody][:id]
+		Gallery.destroy(params[:id])
+
+		redirect "/galleries"
+  	else
+
+    		redirect "/gallery/errors/error_not_your_gallery"
+    	end
 end
 
 
+# Gallery Error messages ==WORKING==
+get '/gallery/errors/error' do
+  erb :"/gallery/errors/error"
+end
 
-# get '/gallery/:id/edit' do
-#   if session[:foody][:id]
-#     erb :"/gallery/#{foody/edit"
-#   else
-#     redirect "/login"
-#   end
-# end
-
-# post '/galleries' do
-#   gallery = Gallery.create(params[:gallery])
-#   session[:foody] = foody
-
-#   redirect to("/gallery/#{session[:foody][:galleries][:id]}")
-# end
-
-# get '/foody/:id' do
-#   "Hello World"
-# end
-
-# put '/foody/:id' do
-#   redirect "/foody/#{session[:foody][:id]}"
-# end
-
-# get '/foody/:id/edit' do
-#   if params[:id].to_i == session[:foody][:id]
-#     erb :"/foody/edit"
-#   else
-#     redirect "/login"
-#   end
-# end
+get "/gallery/errors/error_not_your_gallery" do
+	erb :"/gallery/errors/error_not_your_gallery"
+end

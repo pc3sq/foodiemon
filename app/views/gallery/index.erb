@@ -4,5 +4,13 @@
 <% @galleries.each do |gallery| %>
 <ul>
 	<li><%= gallery.name %></li>
+	
+	<a href="/gallery/<%= gallery.id %>/edit">Edit?</a>
+
+	<form action="/gallery/<%= gallery.id %>" method="post">
+		<input name="_method" type="hidden" value="delete" />
+		<input type="submit" value="Delete?">
+	</form>
+
 </ul>
 <% end %>
