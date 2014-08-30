@@ -1,0 +1,14 @@
+<div class="container">
+
+  <h1>Hi <%= session[:foody][:name] %>! </h1>
+  <h3>Your Gallery Name is: <%= @gallery.name %></h1>
+
+  <form action="/gallery/<%= @gallery.id %>" method="post">
+    <input name="_method" value="put" type="hidden"/>
+    <p>What name would you like to change it to?</p>
+    <input type="text" value="<%= @gallery.name %>" name="gallery[name]">
+    <br>
+    <br>
+    <input type="submit" value="Update This Gallery">
+  </form>
+</div>
