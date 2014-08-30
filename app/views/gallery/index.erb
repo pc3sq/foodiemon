@@ -1,0 +1,8 @@
+<h1>Hi <%= session[:foody][:name] %></h1>
+<h4>Here are your galleries</h4>
+
+<% @galleries.each do |gallery| %>
+<ul>
+	<li><%= gallery.name %></li>
+</ul>
+<% end %>
