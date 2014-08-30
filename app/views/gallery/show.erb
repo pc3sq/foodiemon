@@ -1,8 +1,7 @@
 <h1>Hi <%= session[:foody][:name] %></h1>
 <h4>Here are the pictures in your '<%= @gallery.name %>' gallery</h4>
 
-
-<% @gallery.pictures.each do | picture| %>
+<% @pictures.each do | picture | %>
 	<p><%= picture.name %></p>
 	<img src="<%= picture.url %>">
 	<br>
