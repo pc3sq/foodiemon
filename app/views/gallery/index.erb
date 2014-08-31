@@ -1,7 +1,8 @@
-<div class="container">
-  <h1>WELCOME TO GALLERY </h1>
-  <p>Here are your pics!</p>
-  <% @pics.each do |pic|  %>
-  <p> <a href="<%= pic.url%>"><%= pic.name%></a> </p>
-  <% end %>
-</div>
+<h1>Hi <%= session[:foody][:name] %></h1>
+<h4>Here are your galleries</h4>
+
+<% @galleries.each do |gallery| %>
+<ul>
+	<li><%= gallery.name %></li>
+</ul>
+<% end %>
