@@ -31,9 +31,6 @@ get '/foody/:id/edit' do
   end
 end
 
-# Could create route to redirect to signup if user is 
-# not found in the database
-
 put '/foodies' do
   redirect "/foody/#{session[:foody][:id]}"
 end

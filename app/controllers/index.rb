@@ -16,6 +16,6 @@ post '/login' do
   else
     puts "You suck"
     # Set errors based on validations
-    redirect to '/login'
+    redirect to '/foody/new'
   end
 end
