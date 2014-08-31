@@ -39,11 +39,9 @@ put '/foodies' do
 end
 
 ### DELETE ###
-# Delete account & redirect to signup page
 
+  delete '/foody/:id' do
+    Foody.find(session[:foody][:id]).destroy
 
-
-
-
-
-
+    redirect to('/')  
+  end
