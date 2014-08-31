@@ -1,7 +1,7 @@
 <div class="container">
   <h1>FOODIE-MON MASTER</h1>
 
-  <p>Add validations; Add emails and such</p>
+  <h2>Welcome, <%= session[:foody][:name]%> :-)</h2>
 
   <form action="/foodies" method="post">
     <input name="_method" value="put" type="hidden"/>
@@ -11,6 +11,14 @@
     <input placeholder="Enter new password" type="password"  name="foody[password]">
     <br>
     <br>
-    <input type="submit" value="Sign Up">
+    <input type="submit" value="Change your password">
   </form>
+    <br>
+
+    <!-- Need to Work on this form -->
+  <form action="/foodies" method="post">
+    <input name="_method" value="put" type="hidden"/>
+    <input type="submit" value="Delete My Account">
+  </form>
+
 </div>
