@@ -3,6 +3,11 @@
   <p>Choose what you want to do</p>
   <p>View your Galleries</p>
   <% @foody.galleries.each do |gallery| %>
-  <%= "<a href='/gallery/#{gallery.id}'>#{gallery.name}</a><br>" %>
+  <%= "<a href='/gallery/#{gallery.id}'>#{gallery.name}</a> 
+  <a href='/gallery/#{gallery.id}/edit'>Edit </a><br>" %>
   <% end %>
+  <a href="gallery/new">Create a new gallery</a>
+  <%= erb :'/partials/sign_out'  %>
+  <br>
+  <%= erb :'/partials/nav'  %>
 </div>
