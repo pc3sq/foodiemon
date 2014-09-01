@@ -14,6 +14,6 @@ post '/login' do
     redirect to "/foody/#{session[:foody][:id]}"
   else
     # Set errors based on validations
-    redirect to '/login'
+    redirect to '/foody/new'
   end
 end

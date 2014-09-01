@@ -2,6 +2,8 @@ get '/foody/new' do
   erb :"/foody/signup"
 end
 
+### CREATE ###
+
 post '/foodies' do
   foody = Foody.create(params[:foody])
   session[:foody] = foody
@@ -10,13 +12,14 @@ post '/foodies' do
 end
 
 get '/foody/:id' do
-  @foody = Foody.find(session[:foody][:id])
-  erb :'foody/home'
+  erb :"/foody/show"
 end
 
 put '/foody/:id' do
   redirect "/foody/#{session[:foody][:id]}"
 end
+
+### UPDATE ###
 
 get '/foody/:id/edit' do
   if params[:id].to_i == session[:foody][:id]
@@ -25,3 +28,15 @@ get '/foody/:id/edit' do
     redirect "/login"
   end
 end
+
+put '/foodies' do
+  redirect "/foody/#{session[:foody][:id]}"
+end
+
+### DELETE ###
+
+  delete '/foody/:id' do
+    Foody.find(session[:foody][:id]).destroy
+
+    redirect to('/')  
+  end
