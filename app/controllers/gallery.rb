@@ -1,3 +1,4 @@
+
 # Route for showing all galleries for a Foody ==WORKING==
 get '/galleries' do
   if session[:foody][:id]

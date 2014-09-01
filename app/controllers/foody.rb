@@ -1,5 +1,4 @@
 get '/foody/new' do
-
   erb :"/foody/signup"
 end
 
@@ -13,7 +12,6 @@ post '/foodies' do
 end
 
 get '/foody/:id' do
-  
   erb :"/foody/show"
 end
 

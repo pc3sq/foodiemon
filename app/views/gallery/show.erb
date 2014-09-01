@@ -1,0 +1,7 @@
+<div class="container">
+  <h1><%= @gallery.name %>!</h1>
+  <% @gallery.pictures.each do |pic| %>
+  <%= "<p> #{pic.name} </p>" %>
+  <% end %>
+  <%= erb :'/partials/nav'%>
+</div>
