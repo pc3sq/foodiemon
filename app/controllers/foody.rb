@@ -12,7 +12,12 @@ post '/foodies' do
 end
 
 get '/foody/:id' do
-  erb :"/foody/show"
+  unless session[:foody]
+    redirect '/'
+  end
+  
+  @foody = Foody.find(params[:id])
+  erb :"/foody/home"
 end
 
 put '/foody/:id' do

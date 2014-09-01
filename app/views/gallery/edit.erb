@@ -1,0 +1,10 @@
+<div class="container">
+  <h1><%= @gallery.name %>!</h1>
+  <% @gallery.pictures.each do |pic| %>
+  <%= "<a href='/picture/#{pic.id}'> #{pic.name}</a>" %>
+  <%= "<a href='/picture/#{pic.id}/delete'> Delete</a>" %>
+  <%= "<a href='/picture/#{pic.id}/edit'> Edit </a>" %>
+  <%= "<br>" %>
+  <% end %>
+  <%= erb :'/partials/nav'%>
+</div>

@@ -27,7 +27,7 @@ post '/galleries' do
 		foody.galleries << gallery
 		gallery.pictures << Picture.create(params[:picture])
 
-		redirect to ("/gallery/#{foody.galleries.find(gallery.id)}")
+		redirect to ("/gallery/#{gallery.id}")
 	else
 
 		redirect to ("/gallery/error")
@@ -36,9 +36,9 @@ end
 
 # Route showing a specific gallery
 get '/gallery/:id' do
-	if session[:foody][:id] && Gallery.find(params[:id]).foody.id == session[:foody][:id]
+  @gallery = Gallery.find(params[:id])
 
-		@gallery = Gallery.find(params[:id])
+	if session[:foody][:id] && @gallery.foody.id == session[:foody][:id]
 		erb :"gallery/show"
 	else
 		redirect to ("/gallery/error_not_your_gallery")
@@ -56,13 +56,15 @@ end
 
 
 
-# get '/gallery/:id/edit' do
-#   if session[:foody][:id]
-#     erb :"/gallery/#{foody/edit"
-#   else
-#     redirect "/login"
-#   end
-# end
+get '/gallery/:id/edit' do
+  @gallery = Gallery.find(params[:id])
+
+  unless session[:foody][:id] && @gallery.foody.id == session[:foody][:id]
+    redirect "/login"
+  end
+  
+  erb :"/gallery/edit"
+end
 
 # post '/galleries' do
 #   gallery = Gallery.create(params[:gallery])
